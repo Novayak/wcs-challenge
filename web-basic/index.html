@@ -9,6 +9,21 @@
   </head>
 
   <body>
+    <div id="navbar">
+      <ul>
+
+        <li><a href="#welcome">Welcome</a></li>
+      
+        <li><a href="#history">History</a></li>
+      
+        <li><a href="#heroes">Our Heroes</a></li>
+      
+        <li><a href="#inventory">Inventory</a></li>
+      
+        <li><a href="#contactForm">Contact Us</a></li>
+      
+      </ul>
+    </div>
     <section id="welcome">
       <h1>Hello Argonauts</h1>
     </section>
@@ -22,25 +37,31 @@
         certain sources, Argo was the first ship to sail the seas
       </p>
     </section>
+
     <section id="heroes">
         <h2>Our Argo Heroes</h2>
       <div class="flex-container">
         <div>
-        <img src="./src/assets/images1.png" alt="ares" width="200" />
-        <p>Ares - We shall have fun!</p>
+          <p>Ares</p>
+        <img src="./src/assets/images1.png" alt="ares" height="200"/>
+        
+        <p>We shall have fun!</p>
       </div>
       <div>
-        <img src="./src/assets/images2.jpg" alt="Artemis" width="200" />
-        <p>Artemis - Know thyself.</p>
+        <p>Artemis</p>
+        <img src="./src/assets/images2.png" alt="Artemis" height="200" />
+        <p>Know thyself.</p>
       </div>
       <div>
-        <img src="./src/assets/images3.png" alt="Hercules" width="200" />
+        <p>Hercules</p>
+        <img src="./src/assets/images3.png" alt="Hercules" height="200" />
         <p>
-          Hercules - I am on my way. I can go the distance. I don't care how
+          I am on my way. I can go the distance. <br> I don't care how
           far, somehow I will be strong
         </p>
       </div>
     </section>
+
     <section id="inventory">
         <h2>Inventory</h2>
         <table>
@@ -73,24 +94,23 @@
               <td>Eternity</td>
             </tr>
           </tbody>
-        <table>
-      </section>
-    <div class="btn">
-      <button>Run</button>
-    </div>
+        </table>
+    </section>
 
-    <div class="main-editor">
-      <div class="first" contenteditable></div>
-
-      <iframe class="second"> </iframe>
-    </div>
+   
     <form id="contactForm">
-        <label for="firstname">First name:</label><br>
-        <input type="text" id="firstname" name="fname" value="John"><br>
-        <label for="lastname">Last name:</label><br>
-        <input type="text" id="lastname" name="lname" value="Doe"><br><br>
+      <div>
+        <label for="firstname">First name:</label>
+        <input type="text" id="firstname" name="firstname" value="John">
+      </div>
+      <div>
+        <label for="lastname">Last name:</label>
+        <input type="text" id="lastname" name="lastname" value="Doe">
+      </div>
+      <div>
         <input type="submit" value="Submit">
-       </form>
+      </div>
+    </form>
 
     <script src="./script.js"></script>
   </body>
