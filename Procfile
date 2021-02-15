@@ -1,0 +1,1 @@
+web: java -jar target/dependency/webapp-runner.jar --port 9080 --uri-encoding UTF-8 target/*.war
