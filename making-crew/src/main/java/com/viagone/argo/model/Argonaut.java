@@ -8,6 +8,9 @@ public class Argonaut {
     private Long id;
     private String fullname;
 
+    public Argonaut() {
+    }
+
     public Argonaut(Long id, String fullname) {
         this.id = id;
         this.fullname = fullname;        
@@ -52,6 +55,8 @@ public class Argonaut {
         }
         
     }
+
+    
 
 
 
