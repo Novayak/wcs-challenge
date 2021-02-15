@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Context>
+  <Resource
+      name="jdbc/argo"
+
+      auth="Container"
+      type="javax.sql.DataSource"
+      factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
+      driverClassName="com.mysql.jdbc.Driver"
+
+      username="${mysql.user}"
+      password="${mysql.password}"
+      url="${mysql.url}bloggy?serverTimezone=UTC"
+  />
+</Context>
