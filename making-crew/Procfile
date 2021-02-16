@@ -1,1 +1,1 @@
-web: java -jar target/argo-1.0-SNAPSHOT.jar
+web: java -jar target/dependency/webapp-runner.jar --port 5000 --uri-encoding UTF-8 target/*.war
