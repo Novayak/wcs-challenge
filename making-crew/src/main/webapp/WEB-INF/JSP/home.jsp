@@ -12,7 +12,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../static/css/style.css" <title>The Argo</title>
+  <link rel="stylesheet" href="./static/css/style.css" >
+  <title>The Argo</title>
 </head>
 
 <body>
@@ -30,19 +31,35 @@
   <main>
 
     <!-- New member form -->
-    <h2>Ajouter un(e) Argonaute</h2>
-    <form class="new-member-form">
-      <label for="name">Nom de l&apos;Argonaute</label>
-      <input id="name" name="name" type="text" placeholder="Charalampos" />
-      <button type="submit">Envoyer</button>
-    </form>
-
+    <div>
+	    <h2>Ajouter un(e) Argonaute</h2>
+	    <form class="new-member-form"
+	          method="post"
+	          action="#"
+	          >
+	      <label for="name">Nom de l&apos;Argonaute</label>
+	      <input id="name" name="name" type="text" placeholder="Charalampos" required />
+	      <button type="submit">Envoyer</button>
+	    </form>    
+	    <c:if test="${!empty errorMessage}">
+	      <p class="alert alert-danger" role="alert">
+	        <c:out value="${errorMessage}"/>
+	      </p>
+	    </c:if>
+	    <c:if test="${!empty successMessage}">
+	      <p class="alert alert-danger" role="alert">
+	        <c:out value="${successMessage}"/>
+	      </p>
+	    </c:if>
+    </div>
     <!-- Member list -->
-    <h2>Membres de l'équipage</h2>
-    <section class="member-list">
-      <div class="member-item">Eleftheria</div>
-      <div class="member-item">Gennadios</div>
-      <div class="member-item">Lysimachos</div>
+    <section id="crew">
+	    <h2>Membres de l'équipage</h2>
+	    <ul class="member-list">
+	     <c:forEach var="member" items="${crew}">
+	      <li class="member-item"><c:out value="${member.fullname}"/></li>	      
+	     </c:forEach>
+	    </ul>
     </section>
   </main>
 
@@ -52,7 +69,7 @@
   <script src="https://code.jquery.com/jquery-1.12.3.js" integrity="sha256-1XMpEtA4eKXNNpXcJ1pmMPs8JV+nwLdEqwiJeCQEkyc="
     crossorigin="anonymous">
   </script>
-  <script src="../static/js/script.js"></script>
+  <!--<script src="./static/js/script.js"></script>  -->
 </body>
 
 </html>
