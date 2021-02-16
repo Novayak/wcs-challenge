@@ -3,15 +3,17 @@ package com.viagone.argo.model;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.viagone.argo.Exception.ArgoException;
+
 public class Argonaut {
     
-    private Long id;
+    private Integer id;
     private String fullname;
 
     public Argonaut() {
     }
 
-    public Argonaut(Long id, String fullname) {
+    public Argonaut(Integer id, String fullname) {
         this.id = id;
         this.fullname = fullname;        
     }
@@ -21,11 +23,11 @@ public class Argonaut {
         return "Argonaut [fullname=" + fullname + ", id=" + id + "]";
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -38,16 +40,16 @@ public class Argonaut {
      * @param fullname
      * @throws Exception if the parameter doesn't matchs the valid pattern (only letters and dashes)
      */
-    public void setFullname(String fullname) throws Exception{
+    public void setFullname(String fullname) throws ArgoException{
         String fullnameRegex = "^[a-zA-Z-]+$";
         Pattern p = Pattern.compile(fullnameRegex);
         Matcher m = p.matcher(fullname);
 
         if (m.matches() == false) {
-            throw new Exception("That's not a valid Argonaut name!");
+            throw new ArgoException("That's not a valid Argonaut name!");
         }
         if (fullname.isEmpty()) {
-            throw new Exception("Ghosts are not allowed on board! Please provide a name");
+            throw new ArgoException("Ghosts are not allowed on board! Please provide a name");
         }
 
         else {

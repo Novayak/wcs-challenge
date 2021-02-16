@@ -7,13 +7,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.logging.Logger;
 import javax.sql.DataSource;
 
+import com.viagone.argo.Exception.ArgoException;
 import com.viagone.argo.model.Argonaut;
+
 
 public class ArgonautDAO {
 
+    private static final Logger LOGGER = Logger.getLogger(ArgonautDAO.class.getName());
     private DataSource datasource;
 
     public ArgonautDAO(DataSource datasource) {
@@ -22,28 +25,28 @@ public class ArgonautDAO {
     
     /**
      * 
-     * @return crew:  a list of Argonaut
+     * @return crew:  a list of Argonauts
      * @throws SQLException
      * @throws Exception
      */
-    public List<Argonaut> findAll() throws SQLException, Exception {
+    public List<Argonaut> findAll() throws SQLException, ArgoException {
 
         List<Argonaut> crew = new ArrayList<>();
 
         try (
             Connection connection = this.datasource.getConnection();
             PreparedStatement statement =
-                connection.prepareStatement("select fullname from crew order by id;");
+                connection.prepareStatement("select id, fullname from public.crew order by id;");
         ) {
             try (ResultSet results = statement.executeQuery()) {
                 while(results.next()) {
                     Argonaut newMember = new Argonaut();
-                    newMember.setId(results.getLong(1));
+                    newMember.setId(results.getInt(1));
                     newMember.setFullname(results.getString(2));
                     crew.add(newMember);
                 }
             }
-        }
+        }        
         return crew;
     }
     /**
@@ -52,7 +55,7 @@ public class ArgonautDAO {
      * @throws SQLException
      * @throws Exception
      */
-    public void saveCrewman(Argonaut argonaut) throws SQLException, Exception {
+    public void saveCrewman(Argonaut argonaut) throws SQLException, ArgoException {
         try (
             Connection connection = this.datasource.getConnection();
             PreparedStatement statement = connection.prepareStatement(
@@ -69,7 +72,8 @@ public class ArgonautDAO {
 
             try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
-                    argonaut.setId(generatedKeys.getLong(1));
+                    argonaut.setId(generatedKeys.getInt(1));
+                    LOGGER.info(argonaut.toString());
                 }
                 else {
                     throw new SQLException(
