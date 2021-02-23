@@ -1,4 +1,4 @@
-import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 body {
   margin: 0;
@@ -10,22 +10,15 @@ main {
   margin: 0 auto;
 }
 
-header {
+header { 
   background: #f4f4f4;
-  text-align: center;
-  padding: 2em;
+  text-align: center;  
+  padding: 2rem;
+  margin-bottom: 3rem;
 }
 
 header img {
-  max-width: 96px;
-}
-
-header h1 {
-  font-size: 2.5em;
-}
-
-footer {
-  background: 
+  max-width: 96px;   
 }
 
 h1, h2 {
@@ -37,14 +30,53 @@ label {
   margin-bottom: 0.5em;
 }
 
-.new-member-form {
-  margin: 2em 0 4em 0;
+li {
+  list-style: none;
+}
+
+.new-member-form {    
+  margin: 2rem 0 4rem 0;
+  text-align: center;  
+    }
+    .new-member-form button{    
+      display: block;
+      margin: auto;
+      margin-bottom: 1.5rem;
+      padding: 0 10px;
+        }
+
+
+.member-item {
+  margin: 0 1rem ;
+  padding: 0.5rem 0;
   text-align: center;
 }
 
-.member-item {
-  padding: 0.25em 0;
-}
+/*---------------------------------
+	NOTICES
+-----------------------------------*/
+.notice{
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 185px;  
+  padding:1rem 10px 1rem 30px;  
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+  border-radius:5px; 
+  line-height:120%;
+  vertical-align: center;
+  text-shadow:0px 1px rgba(255,255,255,0.5);
+  position:relative;
+  top:0;
+  left:0;
+  clear:both;
+  }  
+
+    .notice.error{border:1px solid red;background:pink;color:red;}
+    .notice.success{border:1px solid green;background:lightgreen;color:green;}
+    .notice i[class*='fa-']{position:absolute;top:50%;left:0.8em;margin-top:-0.6em;}
+    
+  
 
 footer {
   margin-top: 2em;
@@ -52,4 +84,22 @@ footer {
   color: #fff;
   background: #f76c6c;
   padding: 0.25em 0;
+  width:100%;  
+}
+
+/* Larger than phablet (also point when grid becomes active) */
+@media (min-width: 550px) {
+
+  header {
+    position: sticky;    
+  }
+  header :first-child {
+    float: left;
+    padding-top: 1rem;
+  }
+  
+  footer {
+    bottom: 0;
+    position: absolute;
+  }
 }
