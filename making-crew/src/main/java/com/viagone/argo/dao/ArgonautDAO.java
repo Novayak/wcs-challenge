@@ -1,6 +1,7 @@
 package com.viagone.argo.dao;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,12 +18,9 @@ import com.viagone.argo.model.Argonaut;
 public class ArgonautDAO {
 
     private static final Logger LOGGER = Logger.getLogger(ArgonautDAO.class.getName());
-    private DataSource datasource;
+    private String dbUrl = System.getenv("JDBC_DATABASE_URL");
 
-    public ArgonautDAO(DataSource datasource) {
-        this.datasource = datasource;
-    }
-    
+        
     /**
      * 
      * @return crew:  a list of Argonauts
@@ -34,7 +32,7 @@ public class ArgonautDAO {
         List<Argonaut> crew = new ArrayList<>();
 
         try (
-            Connection connection = this.datasource.getConnection();
+            Connection connection = DriverManager.getConnection(dbUrl);
             PreparedStatement statement =
                 connection.prepareStatement("select id, fullname from public.crew order by id;");
         ) {
@@ -57,7 +55,7 @@ public class ArgonautDAO {
      */
     public void saveCrewman(Argonaut argonaut) throws SQLException, ArgoException {
         try (
-            Connection connection = this.datasource.getConnection();
+            Connection connection = DriverManager.getConnection(dbUrl);
             PreparedStatement statement = connection.prepareStatement(
                 "INSERT INTO crew (fullname) VALUES (?)",
                 Statement.RETURN_GENERATED_KEYS);

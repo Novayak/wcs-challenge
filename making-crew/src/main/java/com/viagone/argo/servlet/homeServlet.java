@@ -1,6 +1,7 @@
 package com.viagone.argo.servlet;
 
 import java.io.IOException;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 
@@ -23,30 +24,11 @@ import com.viagone.argo.model.Argonaut;
 public class homeServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger LOGGER = Logger.getLogger(homeServlet.class.getName()); 
+    private static final Logger LOGGER = Logger.getLogger(homeServlet.class.getName());     
+    private ArgonautDAO argonautDAO = new ArgonautDAO();    
     
-    private ArgonautDAO argonautDAO;
-
-    @Resource(name="jdbc/argo")
-    DataSource datasource;
     
-    @Override
-    public void init() throws ServletException { 
-        try {
-            if (datasource == null) {
-                Context initCtx = new InitialContext();
-                Context envCtx = (Context) initCtx.lookup("java:comp/env");
-                this.datasource = (DataSource) envCtx.lookup("jdbc/argo");
-            }
-        }
-        catch (NamingException ne) {
-            throw new ServletException(ne);
-        }
-        this.argonautDAO = new ArgonautDAO(this.datasource);
-        LOGGER.info(datasource.toString());
-        
-    }
-    
+       
     /**
      * Populate the list of crew members stored in database
      * @param req
