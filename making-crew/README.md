@@ -1,5 +1,6 @@
 # Making-crew
 Exercise proposé lors de la phase de recrutement.
+La version déployée est visibible ici: (https://the-argo.herokuapp.com/#)
 
 ## La quête
 
@@ -28,9 +29,19 @@ Mettre du style
  * PosgreSQL: requis par Heroku pour un usage avec Java
  * JUNIT 5 : pour faire des tests simples sur les requêtes CRUD
  * JBDC: pour l'accès à la BDD, l'emploi d'un ORM semble également superflu
-
- * pur CSS, pas besoin ici de Framework CSS, ou de Sass.
+ * pur CSS? ou un framework minimaliste tel que:
+    1. [Knaccss](https://www.knacss.com)
+    2. [KickStart](http://www.99lime.com/elements/)
+    3. [Skeleton](https://github.com/dhg/Skeleton)
  * NPM ?: si on revient sur la proposition précédente.
  * JavaScript ?: au besoin, si on ajouter un peu de fonctionnalités
 
+## Heroku: Set-up for JEE
 
+* Dévelopement local: [Procfile](https://devcenter.heroku.com/articles/procfile)
+* [Connection avec la base de donnée](https://devcenter.heroku.com/articles/connecting-to-relational-databases-on-heroku-with-java#using-the-jdbc_database_url)
+Heroku privilégie l'emploi des fonctions de la classe java.sql.DriverManager avec JBDC, plutôt que l'interface DataSource (Spring/Hibernate)
+* [Déploiement](https://devcenter.heroku.com/articles/war-deployment)
+utilisation du plugin heroku pour maven
+
+    
