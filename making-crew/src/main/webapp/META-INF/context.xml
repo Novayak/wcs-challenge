@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
 <Context>
   <Resource
       name="jdbc/argo"
 
       auth="Container"
-      type="javax.sql.DataSource"
-      factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
+      type="javax.sql.DataSource"      
       driverClassName="org.postgresql.Driver"
 
       username="vxgkwwzkdzwipa"
-      password="62f992250f163e1a4d22301399b4c99a07f83ba7abb73ae4cf821dd1d27812b4}"
-      url="postgres://vxgkwwzkdzwipa:62f992250f163e1a4d22301399b4c99a07f83ba7abb73ae4cf821dd1d27812b4@ec2-18-204-74-74.compute-1.amazonaws.com:5432/df6e1e3lshhre4"
+      password="62f992250f163e1a4d22301399b4c99a07f83ba7abb73ae4cf821dd1d27812b4"
+      url="jdbc:postgresql://ec2-18-204-74-74.compute-1.amazonaws.com:5432/df6e1e3lshhre4?"
   />
 </Context>
- -->
- 
+
+ <!--
 <Context>
   <Resource
       name="jdbc/argo"
@@ -31,7 +29,7 @@
       removeAbandoned="true"
   />
 </Context>
-
+-->
 <!--
   ${db.****} refers to profiles settings in your .m2 repository
 -->
