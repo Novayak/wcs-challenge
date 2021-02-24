@@ -58,11 +58,9 @@
       <h2>Membres de l'équipage</h2>
       <ul class="member-list">
         <c:forEach var="member" items="${crew}">
-          <li class="member-item">Admète</li>
-          <li class="member-item">Acaste</li>
-          <li class="member-item">Périclyménos</li>
-          <li class="member-item">Astérios </li>
-          <li class="member-item">Polyphème </li>
+          <li class="member-item">
+            <c:out value="${member.fullname}" />
+          </li>
         </c:forEach>
       </ul>
     </section>
